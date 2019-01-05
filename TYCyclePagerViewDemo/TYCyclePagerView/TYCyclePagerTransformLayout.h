@@ -30,6 +30,9 @@ typedef NS_ENUM(NSUInteger, TYCyclePagerTransformLayoutType) {
 
 @interface TYCyclePagerViewLayout : NSObject
 
+//项目特殊需求，只展示两个banner
+@property (nonatomic, assign) BOOL showTwoBanner;
+
 @property (nonatomic, assign) CGSize itemSize;
 @property (nonatomic, assign) CGFloat itemSpacing;
 @property (nonatomic, assign) UIEdgeInsets sectionInset;
