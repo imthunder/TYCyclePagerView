@@ -274,11 +274,15 @@ typedef NS_ENUM(NSUInteger, TYTransformLayoutItemDirection) {
 }
 
 - (UIEdgeInsets)firstSectionInset {
+    CGFloat leftTransformX = _sectionInset.left;
+    if (self.showTwoBanner) {
+        leftTransformX = -(self.pageView.frame.size.width - self.itemSize.width) / 2;
+    }
     if (_itemVerticalCenter) {
         CGFloat verticalSpace = (CGRectGetHeight(_pageView.frame) - _itemSize.height)/2;
-        return UIEdgeInsetsMake(verticalSpace, _sectionInset.left, verticalSpace, _itemSpacing);
+        return UIEdgeInsetsMake(verticalSpace, leftTransformX, verticalSpace, _itemSpacing);
     }
-    return UIEdgeInsetsMake(_sectionInset.top, _sectionInset.left, _sectionInset.bottom, _itemSpacing);
+    return UIEdgeInsetsMake(_sectionInset.top, leftTransformX, _sectionInset.bottom, _itemSpacing);
 }
 
 - (UIEdgeInsets)lastSectionInset {
